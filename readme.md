@@ -1,4 +1,4 @@
-# Layer 4 Load balancing using mysql flask and nginx
+# VPC peering and nginx proxy
 
 This project is a demonstration of using nginx as a layer 4 load balancer for a python based web app and mysql. This project is created using docker compose. 
 
