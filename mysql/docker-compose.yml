@@ -9,5 +9,5 @@ services:
       - "3306:3306"
     
     environment:
-      - MYSQL_ROOT_PASSWORD=my-secret-pw
-      - MYSQL_DATABASE=new_database
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=abcdb

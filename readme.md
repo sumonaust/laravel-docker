@@ -4,7 +4,7 @@ It's a vpc to vpc peering for different region and nginx proxy project. This pro
 
 Here is three container nginx, webserver, mysql. This three folder has their compose file
 
-## Steps 
+## We follow given below Steps 
 
 * Make 3 vpc
 * Make vpc to vpc peering
@@ -15,12 +15,12 @@ Here is three container nginx, webserver, mysql. This three folder has their com
 * Install necessary packages in into every VM
 
 
-## Component Diagram
+## VPC peer Diagram
 
 ![vpc peer diagram](assets/vpc-peer-diagram.png)
 
 
-### Create 3 VPCs
+### Create 3 VPC
 
 1. Ngins Server At first login google cloud and create VPC network. When create VPC network then give a VPC name like vpc-nginx, give a subnet name like subnet-nginx, select us-east1 region and give an ip range like 10.1.0.0/16.
 Above same way you can create VPC for web server and mysql.
@@ -65,7 +65,7 @@ same way you can create vm for web server and mysql
     * select network interface
     * click create    
 
-### Create firewall rules for each instance
+### Create firewall rules for each vm
 
 We need firewall rules to allow ports and ip range so thant instances communicate with them
 
@@ -77,7 +77,7 @@ We need firewall rules to allow ports and ip range so thant instances communicat
 
     * Allow `tcp` trafic on port `80` into `vpc-nginx` for all ip range (0.0.0.0/0). 
 
-### Install necessary packages in each instance
+### Install necessary packages in each vm
 
 Now ssh into all 3 instances and install few softwares in all of them. Run the following commands.
 We need some software for all instance. Given below command
@@ -92,14 +92,14 @@ Clone the repository in all of them
 git clone https://github.com/sumonaust/vpc-peer.git
 
 
-#### In mysql instance 
+#### mysql vm 
 
 Go to folder cd vpc-peer/mysql and run
 
 sudo docker-compose up
 
 
-#### In webapp instance
+#### webapp vm
 
 
 Go to folder cd vpc-peer/webserver 
@@ -114,7 +114,7 @@ Now run to run webserver instances
 sudo docker-compose up -d
 
 
-#### In Nginx load balancer instance
+#### Nginx vm
 
 Go to folder cd vpc-peer/nginx-proxy 
 
@@ -124,7 +124,7 @@ nano nginx.conf
 
 Change server value in `upstream backend` to webapp ip address and port and `upstream db` to db ip address and port. 
 
-![upstream](assets/vm-command/upstream.png)
+![upstream](assets/nginxconf.png)
 
 Save and exit using `CTRL +X`. Now run
 
@@ -137,12 +137,12 @@ To check the connectivity we can use `telnet` command.
 From load balancer nginx instance check connection to webapp and database by typing
 
 To check webapp connection `telnet 10.2.0.2 8080`
-![lb-webapp](assets/vm-command/lb-webapp.png)
+#![lb-webapp](assets/vm-command/lb-webapp.png)
 
 
 To check database connection `telnet 10.3.0.2 3306`
 
-![lb-db](assets/vm-command/lb-db.png)
+#![lb-db](assets/vm-command/lb-db.png)
 
 If everything is ok then we should see the above outputs.
 
@@ -150,7 +150,7 @@ We need to check another connection from webapp instance
 
 To check database connection `telnet 10.1.0.2 3306`
 
-![webapp-lb-db](assets/vm-command/webapp-lb-db.png)
+#![webapp-lb-db](assets/vm-command/webapp-lb-db.png)
 
 
 Now we can check connection from browser 
@@ -158,11 +158,11 @@ Now we can check connection from browser
 Visiting public ip of `nginx-vm` will show 
 
 
-![index page](assets/vm-command/index-page.png)
+#![index page](assets/vm-command/index-page.png)
 
 Visiting `/connection` path will show 
 
 
-![connection successful](assets/vm-command/connection-successful.png)
+#![connection successful](assets/vm-command/connection-successful.png)
 
 
