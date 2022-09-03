@@ -4,7 +4,7 @@ services:
 
   nginx-lb:
     image: nginx
-    container_name: nginx-lb
+    container_name: nginx-proxy
     ports:
       - "3306:3306"
       - "80:80"

@@ -20,14 +20,14 @@ def check_connection():
                     port=int(MYSQL_PORT),
                     cursorclass=pymysql.cursors.DictCursor
             )
-        return f"Connection successful"
+        return f"Connection is ok"
     except Exception as e:
         return f"Connection failure: {str(e)}"
     
 
 @app.route("/")
 def index():
-    return "Hello, this is index"
+    return "Home page"
 
 @app.route("/connection")
 def connection():
