@@ -17,7 +17,7 @@ Here is three container nginx, webserver, mysql. This three folder has their com
 
 ## Component Diagram
 
-![component diagram](assets/load-balancer-diagram.png)
+![vpc peer diagram](assets/vpc-peer-diagram.png)
 
 
 ### Create 3 VPCs
