@@ -137,12 +137,12 @@ To check the connectivity we can use `telnet` command.
 From load balancer nginx instance check connection to webapp and database by typing
 
 To check webapp connection `telnet 10.2.0.2 8080`
-#![lb-webapp](assets/ntoweb.png)
+#![webapp](assets/ntoweb.png)
 
 
 To check database connection `telnet 10.3.0.2 3306`
 
-#![lb-db](assets/ntodb.png)
+#![db](assets/ntodb.png)
 
 If everything is ok then we should see the above outputs.
 
@@ -150,7 +150,7 @@ We need to check another connection from webapp instance
 
 To check database connection `telnet 10.1.0.2 3306`
 
-#![webapp-lb-db](assets/webtodb.png)
+#![webapp](assets/webtodb.png)
 
 
 Now we can check connection from browser 
